@@ -12,6 +12,12 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      minHeight: {
+        screen: "93vh", 
+      },
+      height: {
+        'screen-93': '93vh', // Custom class h-screen-93
+      },
     },
   },
   plugins: [],

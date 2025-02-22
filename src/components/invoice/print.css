@@ -1,0 +1,43 @@
+@media print {
+    body {
+      width: 80mm; /* Set to your receipt printer width */
+      margin: 0;
+      padding: 0;
+      font-size: 12px;
+    }
+    
+    .print-container {
+      width: 80mm;
+      font-family: Arial, sans-serif;
+      padding: 5px;
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+  
+    th, td {
+      text-align: left;
+      padding: 3px;
+    }
+    
+    .hidden-print {
+      display: none !important;
+    }
+  }
+  
+  @media print {
+    body {
+      overflow: hidden !important; /* Prevents scrollbar */
+    }
+  
+    ::-webkit-scrollbar {
+      display: none !important; /* Hides scrollbar */
+    }
+  
+    .no-print {
+      display: none !important; /* Hides elements you don't want in the print */
+    }
+  }
+  
