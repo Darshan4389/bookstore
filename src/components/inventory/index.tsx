@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { db } from '@/lib/firebase';
 import { Book } from '@/types/book';
 import { Category } from '@/types/category';
-import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
-import { Plus, Edit2, Trash2, Search, ChevronDown, BookOpen, DollarSign, Package } from 'lucide-react';
+import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from 'firebase/firestore';
+import { BookOpen, ChevronDown, DollarSign, Edit2, Package, Plus, Search, Trash2 } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 
 export default function Inventory() {

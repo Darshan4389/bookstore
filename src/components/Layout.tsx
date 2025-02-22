@@ -1,10 +1,10 @@
 "use client";
 
 import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { DollarSign, LayoutDashboard, LogOut, Menu, Package, Receipt, Settings, ShoppingCart, Store, Users } from 'lucide-react';
 import Link from "next/link";
-import { LayoutDashboard, Package, ShoppingCart, Store, Users, Settings, DollarSign, LogOut, Menu, Home, Receipt } from 'lucide-react';
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const menuItems = [
   {

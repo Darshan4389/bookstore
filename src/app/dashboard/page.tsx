@@ -1,14 +1,14 @@
 /** @jsxImportSource react */
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { collection, getDocs, query, where, orderBy, limit } from 'firebase/firestore';
-import { startOfDay, endOfDay, startOfWeek, endOfWeek, startOfMonth, endOfMonth } from 'date-fns';
+import { endOfDay, endOfMonth, endOfWeek, startOfDay, startOfMonth, startOfWeek } from 'date-fns';
+import { collection, getDocs, limit, orderBy, query, where } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
 
 import { db } from '@/lib/firebase';
 import { format, subDays } from 'date-fns';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, LineChart, Line, ResponsiveContainer, Cell } from 'recharts';
-import { Package, Users, ShoppingBag, DollarSign, AlertTriangle } from 'lucide-react';
+import { AlertTriangle, DollarSign, Package, ShoppingBag, Users } from 'lucide-react';
+import { Bar, BarChart, CartesianGrid, Cell, Legend, Line, LineChart, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 export default function Dashboard() {
   const [metrics, setMetrics] = useState({
@@ -206,10 +206,10 @@ const [lowStockProducts, setLowStockProducts] = useState<{ id: string; title: st
     const ordersRef = collection(db, 'orders');
     const snapshot = await getDocs(ordersRef);
     
-    const bookSales = {};
+    const bookSales:any = {};
     snapshot.docs.forEach(doc => {
       const data = doc.data();
-      data.items.forEach(item => {
+      data.items.forEach((item:any) => {
         const bookId = item.book.id;
         if (!bookSales[bookId]) {
           bookSales[bookId] = {
@@ -220,8 +220,8 @@ const [lowStockProducts, setLowStockProducts] = useState<{ id: string; title: st
         bookSales[bookId].value += item.quantity;
       });
     });
-
-    setTopBooks(Object.values(bookSales).sort((a, b) => b.value - a.value).slice(0, 5));
+const data:any  =Object.values(bookSales).sort((a:any, b:any) => b.value - a.value).slice(0, 5)
+    setTopBooks(data);
   };
 
   const fetchRevenueGrowth = async () => {
@@ -251,7 +251,7 @@ const [lowStockProducts, setLowStockProducts] = useState<{ id: string; title: st
     const q = query(ordersRef, orderBy('createdAt', 'desc'), limit(5));
     const snapshot = await getDocs(q);
     
-    const orders = snapshot.docs.map(doc => ({
+    const orders:any = snapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data(),
     }));
@@ -264,7 +264,7 @@ const [lowStockProducts, setLowStockProducts] = useState<{ id: string; title: st
     const q = query(booksRef, where('stock', '<', 5));
     const snapshot = await getDocs(q);
     
-    const books = snapshot.docs.map(doc => ({
+    const books:any = snapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data(),
     }));

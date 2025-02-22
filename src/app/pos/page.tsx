@@ -1,18 +1,18 @@
 /** @jsxImportSource react */
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import Invoice from '@/components/invoice';
+import CustomerSelector from '@/components/pos/CustomerSelector';
+import { useAuth } from '@/context/AuthContext';
+import { db } from '@/lib/firebase';
+import { Bill, BillItem } from '@/types/bill';
 import { Book } from '@/types/book';
 import { Category } from '@/types/category';
-import { BillItem, Bill } from '@/types/bill';
-import { StoreSettings } from '@/types/store';
 import { Customer } from '@/types/customer';
-import { collection, getDocs, addDoc, doc, getDoc, writeBatch, updateDoc, query, orderBy, limit } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
-import { useAuth } from '@/context/AuthContext';
-import { Search, ShoppingCart, Plus, Minus, Trash2, Tag, CreditCard, Smartphone, UserPlus, X } from 'lucide-react';
-import CustomerSelector from '@/components/pos/CustomerSelector';
-import Invoice from '@/components/invoice';
+import { StoreSettings } from '@/types/store';
+import { collection, doc, getDoc, getDocs, limit, orderBy, query, updateDoc, writeBatch } from 'firebase/firestore';
+import { CreditCard, Minus, Plus, Search, ShoppingCart, Smartphone, Tag, Trash2, UserPlus, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 
 export default function POS() {

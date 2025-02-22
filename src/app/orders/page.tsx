@@ -1,14 +1,14 @@
 /** @jsxImportSource react */
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import { collection, getDocs, query, where, orderBy, doc, getDoc } from 'firebase/firestore';
+import Invoice from '@/components/invoice';
 import { db } from '@/lib/firebase';
 import { Bill } from '@/types/bill';
 import { StoreSettings } from '@/types/store';
-import { format, startOfDay, endOfDay, parse } from 'date-fns';
-import { Search, Printer, Eye, X } from 'lucide-react';
-import Invoice from '@/components/invoice';
+import { endOfDay, format, parse, startOfDay } from 'date-fns';
+import { collection, doc, getDoc, getDocs, orderBy, query, where } from 'firebase/firestore';
+import { Eye, Printer, Search, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 
 export default function Orders() {
@@ -20,7 +20,6 @@ export default function Orders() {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedBill, setSelectedBill] = useState<Bill | null>(null);
   const [showBillModal, setShowBillModal] = useState(false);
-  const printRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetchOrders();

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Bill } from '@/types/bill';
 import { format } from 'date-fns';
 import './print.css';
