@@ -1,13 +1,11 @@
 /** @jsxImportSource react */
 'use client';
 
-import { endOfDay, endOfMonth, endOfWeek, startOfDay, startOfMonth, startOfWeek } from 'date-fns';
-import { collection, getDocs, limit, orderBy, query, where } from 'firebase/firestore';
-import { useEffect, useState } from 'react';
-
 import { db } from '@/lib/firebase';
-import { format, subDays } from 'date-fns';
+import { endOfDay, endOfMonth, endOfWeek, format, startOfDay, startOfMonth, startOfWeek, subDays } from 'date-fns';
+import { collection, getDocs, limit, orderBy, query, where } from 'firebase/firestore';
 import { AlertTriangle, DollarSign, Package, ShoppingBag, Users } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { Bar, BarChart, CartesianGrid, Cell, Legend, Line, LineChart, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 export default function Dashboard() {
