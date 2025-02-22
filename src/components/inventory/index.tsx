@@ -34,11 +34,13 @@ export default function Inventory() {
   const fetchBooks = async () => {
     setIsLoading(true);
     try {
+      console.log("books fetching started")
       const querySnapshot = await getDocs(collection(db, 'books'));
       const booksData = querySnapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
       })) as Book[];
+      console.log("books fetching successfully",booksData)
       setBooks(booksData);
     } catch (error) {
       console.error('Error fetching books:', error);
